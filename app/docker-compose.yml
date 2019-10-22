@@ -10,7 +10,12 @@ services:
       - '3000:3000'
     depends_on:
       - db
+    logging:
+      driver: gelf
+      options:
+        gelf-address: 'udp://localhost:12201'
   db:
     image: postgres:10.5
     environment:
       POSTGRES_DB: app_development
+ 
